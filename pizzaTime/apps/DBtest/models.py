@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 ## Tabla adminsitrador
-class Administrador(models.Models):
+class Administrador(models.Model):
     id_administracion = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=20)
     apellido = models.CharField(max_length=20)
@@ -11,21 +11,21 @@ class Administrador(models.Models):
     contraseña = models.CharField(max_length=15)
 
 ## Tabla carrito
-class Carrito(models.Models):
+class Carrito(models.Model):
     id_carrito = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=20)
 
 ## Tabla producto
-class Producto(models.Models):
+class Producto(models.Model):
     id_producto = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=20)
     descripcion = models.CharField(max_length=45)
     precio = models.IntegerField()
     id_carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE)
-    id_precio = models.ForeingKey(Administrador, on_delete=models.CASCADE)
+    id_precio = models.ForeignKey(Administrador, on_delete=models.CASCADE)
 
 ## Tabla cliente
-class Cliente(models.Models):
+class Cliente(models.Model):
     id_cliente = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length = 20)
     apellido = models.CharField(max_length = 20)
@@ -35,13 +35,64 @@ class Cliente(models.Models):
     id_carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE)
 
 ## Tabla telefono
-class Telefono(models.Models):
+class Telefono(models.Model):
     numero = models.CharField(max_length=10)
     indicativo_pais = models.IntegerField()
     id_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
 
 ## Tabla domiciliario
-class Domiciliario(models.Models):
+class Domiciliario(models.Model):
     id_domiciliario = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=20)
     apellido = models.CharField(max_length=20)
+
+#Tabla Pais
+class Pais(models.Model):
+    id_pais = models.IntegerField(primary_key=True)
+    nombre_pais = models.CharField(max_length=20)
+
+#Tabla Ciudad
+class Ciudad(models.Model):
+    id_ciudad = models.IntegerField(primary_key=True)
+    nombre_ciudad = models.CharField(max_length=20)
+    id_pais = models.ForeignKey(Pais, on_delete=models.CASCADE)
+
+#Tabla Direccion
+class Direccion(models.Model):
+    id_direccion = models.IntegerField(primary_key = True)
+    calle= models.IntegerField()
+    numero_1= models.IntegerField()
+    numero_2= models.IntegerField()
+    id_ciudad = models.ForeignKey(Ciudad, on_delete=models.CASCADE)
+    id_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+
+#Tabla Sede
+class Sede(models.Model):
+    id_sede = models.IntegerField(primary_key=True)
+    nombre_sede = models.CharField(max_length=20)
+    id_direccion = models.ForeignKey(Direccion, on_delete=models.CASCADE)
+
+#Tabla Pedido
+class Pedido(models.Model):
+    id_pedido = models.IntegerField(primary_key=True)
+    fecha = models.DateField()
+    hora = models.TimeField(auto_now=False, auto_now_add=False)
+    valor_total = models.IntegerField()
+    id_sede = models.ForeignKey(Sede, on_delete=models.CASCADE)
+    id_domiciliario = models.ForeignKey(Domiciliario, on_delete=models.CASCADE)
+
+
+
+
+from django.contrib import admin
+admin.site.register(Administrador)
+admin.site.register(Carrito)
+admin.site.register(Producto)
+admin.site.register(Cliente)
+admin.site.register(Telefono)
+admin.site.register(Domiciliario)
+admin.site.register(Pais)
+admin.site.register(Ciudad)
+admin.site.register(Direccion)
+admin.site.register(Sede)
+admin.site.register(Pedido)
