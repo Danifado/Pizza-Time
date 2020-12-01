@@ -23,7 +23,7 @@ class Carrito(models.Model):
 #Telefono
 
 class Telefono (models.Model):
-    numero = models.IntegerField(primary_key = True)
+    numero = models.BigIntegerField(primary_key = True)
     indicativo_pais = models.IntegerField()
     id_cliente = models.ForeignKey(Cliente, on_delete= models.CASCADE)
 
