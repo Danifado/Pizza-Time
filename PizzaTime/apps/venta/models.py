@@ -7,7 +7,7 @@ from apps.cliente.models import Cliente, Direccion
 #Domiciliario 
 
 class Domiciliario (models.Model):
-    id_domiciliario = models.IntegerField(primary_key = True)
+    id_domiciliario = models.AutoField(primary_key = True)
     nombre = models.CharField(max_length=20)
     apellido = models.CharField(max_length=20)
 
@@ -15,14 +15,17 @@ class Domiciliario (models.Model):
 #Sede
 
 class Sede (models.Model):
-    id_sede = models.IntegerField(primary_key = True)
+    id_sede = models.AutoField(primary_key = True)
     nombre = models.CharField(max_length=20)
     id_direccion = models.ForeignKey(Direccion, on_delete= models.CASCADE)
+
+    def __str__(self):
+        return self.nombre
 
 #Pedido
 
 class Pedido (models.Model):
-    id_pedido = models.IntegerField(primary_key = True)
+    id_pedido = models.AutoField(primary_key = True)
     fecha = models.DateField()
     hora = models.TimeField()
     valor_total = models.IntegerField()
