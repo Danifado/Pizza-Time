@@ -20,13 +20,14 @@ def crearCliente(request):
 
 def crearTelefono(request):
     form = TelefonoForm()
+    Clientes = Cliente.objects.all()
     if request.method == 'POST':
         form = TelefonoForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('/cliente/')
 
-    context = {'form': form}
+    context = {'form': form, 'Clientes':Clientes}
     return render(request, 'cliente/crearTelefono.html', context)
 
 def crearPais(request):

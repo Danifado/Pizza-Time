@@ -13,6 +13,12 @@
                         <form method="POST">
                             {% csrf_token %} <!-- django verifica que el formulario sea enviado -->
                             {{form.as_p}} <!-- introduce el formulario y sus campos -->
+                            
+                            <!-- <p>Cliente: </p><select name="Clientes" id="">
+                                {% for cli in Clientes %}
+                                    <option value="{{ cli.pk }}">{{ cli.nombre }}</option>
+                                {% endfor %}
+                            </select> -->
                             <button type = "submit" onclick="alerta()">Crear</button>
                             <script>
                                 function alerta(){alert("Formulario enviado exitosamente.")}

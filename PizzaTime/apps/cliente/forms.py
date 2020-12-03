@@ -1,6 +1,9 @@
 from django import forms
 from apps.cliente.models import Cliente, Carrito, Telefono, Pais, Ciudad, Direccion
 
+
+
+
 # Cliente Form
 class ClienteForm(forms.ModelForm):
     class Meta:
@@ -26,15 +29,17 @@ class ClienteForm(forms.ModelForm):
 
 class TelefonoForm(forms.ModelForm):
     # id_clientes = forms.ModelChoiceField(queryset=Cliente.objects.values_list('id_cliente'))
+    
     class Meta:
+        id_cliente = forms.ModelChoiceField(queryset=Cliente.objects.values('id_cliente'), empty_label=None, to_field_name=None)
         model = Telefono
 
-        fields = '__all__'
+        fields = ('numero', 'indicativo_pais', 'id_cliente')
 
         labels = {
             'numero': 'Número de teléfono celular',
             'indicativo_pais': 'Indicativo',
-            'id_cliente': 'Tu id'
+            'id_cliente': 'Tu nombre'
         }
 
 
@@ -42,6 +47,11 @@ class DireccionForm(forms.ModelForm):
     class Meta:
         model = Direccion
         fields = '__all__'
+
+        labels = {
+            'id_cliente': 'Nombre',
+            'id_ciudad': 'Ciudad'
+        }
 
 class CiudadForm(forms.ModelForm):
     class Meta:
