@@ -8,6 +8,9 @@ from apps.producto.forms import ProductoForm
 def index(request):
     return render(request, 'producto/inicio.html')
 
+def inicio(request):
+    return render(request, 'inicio.html')
+
 def CrearProducto(request):
     if request.method == 'POST':
         form = ProductoForm(request.POST)
