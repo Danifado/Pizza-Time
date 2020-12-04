@@ -25,7 +25,7 @@ def crearTelefono(request):
         form = TelefonoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/cliente/')
+            return redirect('/cliente/crearDireccion')
 
     context = {'form': form, 'Clientes':Clientes}
     return render(request, 'cliente/crearTelefono.html', context)

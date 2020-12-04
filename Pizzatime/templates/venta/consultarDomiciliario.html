@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if domiciliarios %}
+        {% for dom in domiciliarios %}
+        <tr>
+            <td>{{ dom.id_producto }}</td>
+            <td>{{ domnombre }}</td>
+            <td>{{ dom.descripcion }}</td>
+            <td>{{ pdom.precio}}</td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}
