@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if domiciliarios %}
+        {% for dom in domiciliarios %}
+        <tr>
+            <td>{{ dom.id_domiciliario }}</td>
+            <td>{{ dom.nombre }}</td>
+            <td>{{ dom.apellido }}</td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

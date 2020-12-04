@@ -8,5 +8,5 @@ urlpatterns = [
     path('crearPais/', crearPais),
     path('crearCiudad/', crearCiudad),
     path('crearDireccion/', crearDireccion),
-    path('crearCarrito/', crearCarrito)
+    path('crearCarrito/', crearCarrito),
 ]
