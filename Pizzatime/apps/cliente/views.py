@@ -51,7 +51,7 @@ def crearCiudad(request):
         cform = CiudadForm(request.POST)
         if (cform.is_valid()):
             cform.save()
-            return redirect('/cliente/crearDireccion')
+            return redirect('/cliente/crearCiudad/')
     context = {'cform': cform}
     return render(request, 'cliente/crearCiudad.html', context)
 
