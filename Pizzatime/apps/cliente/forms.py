@@ -49,3 +49,8 @@ class PaisForm(forms.ModelForm):
     class Meta:
         model = Pais
         fields = '__all__'
+
+class CarritoForm(forms.ModelForm):
+    class Meta:
+        model = Carrito
+        fields = '__all__'

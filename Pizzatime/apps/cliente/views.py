@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from apps.cliente.models import Cliente
-from apps.cliente.forms import ClienteForm, TelefonoForm, PaisForm, CiudadForm, DireccionForm
+from apps.cliente.forms import ClienteForm, TelefonoForm, PaisForm, CiudadForm, DireccionForm, CarritoForm
 
 # Create your views here.
 
@@ -65,3 +65,13 @@ def crearDireccion(request):
     context = {'dform': dform}
     return render(request, 'cliente/crearDireccion.html', context)
     # dform = DireccionForm()
+
+def crearCarrito(request):
+    if request.method == 'POST':
+        form = CarritoForm(request.POST)
+        if (form.is_valid()):
+            form.save()
+    else:
+        form = CarritoForm()
+    context = {'form': form}
+    return render(request, 'venta/crearCarrito.html', context)

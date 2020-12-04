@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Cliente, Direccion
-from .forms import DomiciliarioForm, SedeForm, PedidoForm
+from apps.venta.forms import DomiciliarioForm, SedeForm, PedidoForm
 # Create your views here.
 
 def crearDomiciliario(request):
@@ -15,7 +15,8 @@ def crearDomiciliario(request):
 def crearSede(request):
     if request.method == 'POST':
         form = SedeForm(request.POST)
-        form.save()
+        if (form.is_valid()):
+            form.save()
     else:
         form = SedeForm()
     context = {'form': form}

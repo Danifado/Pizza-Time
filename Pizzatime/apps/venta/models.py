@@ -11,6 +11,9 @@ class Domiciliario (models.Model):
     nombre = models.CharField(max_length=20)
     apellido = models.CharField(max_length=20)
 
+    def __str__(self):
+        return str(self.id_domiciliario)+' - '+ self.nombre + ' ' +self.apellido
+
 
 #Sede
 class Sede (models.Model):
