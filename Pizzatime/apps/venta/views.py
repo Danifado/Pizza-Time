@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Cliente, Direccion
 from apps.venta.forms import DomiciliarioForm, SedeForm, PedidoForm
-from apps.venta.models import 
+from apps.venta.models import Domiciliario
 # Create your views here.
 
 def crearDomiciliario(request):
@@ -33,6 +33,6 @@ def crearPedido(request):
     return render(request, 'venta/crearPedido.html', context)
 
 def consultarDomiciliario(request):
-    domiciliarios = Domicliriario.objects.all()
-    contexto = {'productos': productos}
-    return render(request, 'producto/consultarProducto.html', contexto)
+    domiciliarios = Domiciliario.objects.all()
+    contexto = {'domiciliarios': domiciliarios}
+    return render(request, 'venta/consultarDomiciliario.html', contexto)

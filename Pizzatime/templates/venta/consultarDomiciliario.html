@@ -6,18 +6,16 @@
         <tr>
             <th>Id</th>
             <th>Nombre</th>
-            <th>Descripcion</th>
-            <th>Precio</th>
+            <th>Apellido</th>
         </tr>
     </thead>
     <tbody>
         {% if domiciliarios %}
         {% for dom in domiciliarios %}
         <tr>
-            <td>{{ dom.id_producto }}</td>
-            <td>{{ domnombre }}</td>
-            <td>{{ dom.descripcion }}</td>
-            <td>{{ pdom.precio}}</td>
+            <td>{{ dom.id_domiciliario }}</td>
+            <td>{{ dom.nombre }}</td>
+            <td>{{ dom.apellido }}</td>
         </tr>
         {% endfor %}
         {% endif %}
