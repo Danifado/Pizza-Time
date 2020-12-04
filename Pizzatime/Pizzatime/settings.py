@@ -81,9 +81,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'PizzaTime',
         'USER': 'postgres',
-        'PASSWORD': '123', 
+        'PASSWORD': 'La.33589', 
         'HOST': 'localhost',
-        'PORT': 5432,
+        'PORT': '5432',
     }
 }
 
