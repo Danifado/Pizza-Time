@@ -1,5 +1,5 @@
 from django.urls import path
-from apps.cliente.views import index, crearCliente, crearTelefono, crearDireccion, crearPais, crearCiudad, crearCarrito, consultarDomiciliario
+from apps.cliente.views import index, crearCliente, crearTelefono, crearDireccion, crearPais, crearCiudad, crearCarrito
 
 urlpatterns = [
     path('', index),
@@ -9,5 +9,4 @@ urlpatterns = [
     path('crearCiudad/', crearCiudad),
     path('crearDireccion/', crearDireccion),
     path('crearCarrito/', crearCarrito),
-    path('consultarDomiciliario/', consultarDomiciliario)
 ]
